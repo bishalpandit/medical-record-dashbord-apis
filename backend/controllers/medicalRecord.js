@@ -7,7 +7,7 @@ import asyncHandler from "express-async-handler";
 
 export const getMedicalRecords = asyncHandler(async (req, res) => {
 
-    const medicalRecords = await Model.find({});
+    const medicalRecords = await medicalRecordModel.find({});
 
     if (medicalRecords)
         res.json(medicalRecords)
