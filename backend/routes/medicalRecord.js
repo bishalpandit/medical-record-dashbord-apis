@@ -1,20 +1,18 @@
 import express from 'express'
+import { getMedicalRecords, createMedicalRecord } from '../controllers/medicalRecord.js'
+import protect from '../middlewares/authMiddleware.js'
 
 const router = express.Router()
 
 //@desc shows all Medical Records
 //@route GET /api/medical-records/
 //@access Protected
-router.route('/').get(getMedicalRecords)
+router.route('/').get(protect, getMedicalRecords)
 
 //@desc creates a new Medical Record
 //@route POST /api/medical-records/create
 //@access Protected
-router.route('/create').post(createMedicalRecord)
+router.route('/create').post(protect, createMedicalRecord)
 
-//@desc deletes a Medical Record by ID
-//@route DELETE /api/medical-records/delete
-//@access Protected
-router.route('/delete/:id').delete(deleteMedicalRecord)
 
 export default router

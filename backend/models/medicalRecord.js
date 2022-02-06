@@ -4,6 +4,11 @@ import validator from 'validator'
 const { Schema } = mongoose
 
 const medicalRecordSchema = new Schema({
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User',
+    },
     name: {
         type: String,
         required: true

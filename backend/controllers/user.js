@@ -28,7 +28,7 @@ export const registerUser = asyncHandler(async (req, res) => {
             _id: userDoc._id,
             name: userDoc.name,
             email: userDoc.email,
-            token: generateToken()
+            token: generateToken(userDoc._id)
         })
     }
     else {

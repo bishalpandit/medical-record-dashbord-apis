@@ -4,7 +4,6 @@ import medicalRecordRoutes from './routes/medicalRecord.js'
 import { connectDB } from './config/db.js'
 import dotenv from 'dotenv'
 import chalk from 'chalk'
-import generateToken from './utils/generateToken.js'
 import path from 'path'
 
 const app = express()
@@ -19,3 +18,9 @@ app.use(express.json())
 //Routes
 app.use('/api/users', userRoutes)
 app.use('/api/medical-records', medicalRecordRoutes)
+
+const PORT = process.env.PORT || 5000
+
+app.listen(PORT, () => {
+    console.log(chalk.yellow(`Server running on PORT ${PORT}`));
+})
