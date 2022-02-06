@@ -86,4 +86,13 @@ medical records stored in database.
 
 Authorized users(having jwt token in headers) can create medical records to be stored in database.
 
+### SEARCH Medical Record [api/medical-records?startDate=2021-01-01&&endDate=2021-05-25]
+
+```js
+   localhost:5000/api/medical-records/?name='cold' or localhost:5000/api/medical-records/?startDate=2021-01-01&&endDate=2021-05-25
+```
+
+Search medical records based on name or date range as 
+query parameters
+
 <p align="right">(<a href="#top">back to top</a>)</p>
