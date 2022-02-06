@@ -1,6 +1,6 @@
 import express from 'express'
 import userRoutes from './routes/user.js'
-import medicalRecordRoutes from './routes/admin.js'
+import medicalRecordRoutes from './routes/medicalRecord.js'
 import { connectDB } from './config/db.js'
 import dotenv from 'dotenv'
 import chalk from 'chalk'
@@ -18,4 +18,4 @@ app.use(express.json())
 
 //Routes
 app.use('/api/users', userRoutes)
-app.use('/api/admin', adminRoutes)
+app.use('/api/medical-records', medicalRecordRoutes)
