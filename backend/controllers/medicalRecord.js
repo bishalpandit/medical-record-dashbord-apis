@@ -7,7 +7,27 @@ import asyncHandler from "express-async-handler";
 
 export const getMedicalRecords = asyncHandler(async (req, res) => {
 
-    const medicalRecords = await medicalRecordModel.find({});
+    const name = req.query.name
+    const startDate = req.query.startDate
+    const endDate = req.query.endDate
+
+
+    let medicalRecords
+
+    if (name) {
+        medicalRecords = await medicalRecordModel.find({ name: { $regex: name, $options: 'i' } })
+    }
+    else if (startDate && endDate) {
+        medicalRecords = await medicalRecordModel.find({
+            $and: [
+                { from: { $gte: new Date(startDate) } },
+                { to: { $lte: new Date(endDate) } }
+            ]
+        })
+    } 
+    else {
+        medicalRecords = await medicalRecordModel.find({})
+    }
 
     if (medicalRecords)
         res.json(medicalRecords)
